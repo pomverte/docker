@@ -1,4 +1,6 @@
 ## Redis
+Official repository : https://hub.docker.com/_/redis/
+
 Redis server with a password set in the configuration file.
 
 Note : docker-compose seems to be bugged if you want to mount volumes for files, it will create a directory instead
