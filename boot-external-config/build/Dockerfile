@@ -1,2 +1,6 @@
-FROM tomcat:7.0.72-jre7
-COPY boot-external-config-0.0.1-SNAPSHOT.war $CATALINA_HOME/webapps/boot-external-config.war
+FROM openjdk:7-alpine
+VOLUME /tmp
+ADD boot-external-config-0.0.1-SNAPSHOT.jar boot-external-config.jar
+ADD application.properties config/application.properties
+RUN sh -c 'touch /boot-external-config.jar'
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/boot-external-config.jar"]
