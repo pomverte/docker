@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  boot-external-config-jar:
+    build: ./build
+    image: pomverte/boot-external-config-jar:0.0.1
+    container_name: boot-external-config
+    ports:
+      - "8080:8080"
