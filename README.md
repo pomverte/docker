@@ -8,6 +8,7 @@ docker-machine env default
 docker-compose config
 docker-compose up -d
 docker-compose ps
+docker-machine ip
 ```
 
 Force rebuild
