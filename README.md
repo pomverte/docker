@@ -15,3 +15,6 @@ Force rebuild
 ```
 docker-compose up -d --build
 ```
+
+Show log
+ docker logs [container_name]
