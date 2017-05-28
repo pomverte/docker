@@ -3,6 +3,10 @@
 I'm using Docker Toolbox (https://www.docker.com/products/docker-toolbox)
 
 ----
+
+docker-machine create --driver virtualbox default
+docker-machine ls
+
 docker-machine start default
 docker-machine env default
 
