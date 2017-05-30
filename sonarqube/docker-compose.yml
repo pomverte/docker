@@ -1,10 +1,10 @@
-version: '2'
+version: '3'
 
 services:
   sonarqube:
     build: ./build
-    image: pomverte/sonarqube:5.6
-    container_name: synergie_sonarqube
+    image: pomverte/sonarqube:6.3.1-alpine
+    container_name: sonarqube-server
     ports:
       - "9000:9000"
       - "9092:9092"

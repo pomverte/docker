@@ -1,0 +1,52 @@
+= SonarQube
+
+Spin up a SonarQube container with some installed plugins.
+
+== Run Sonar Scanner from a maven project
+
+=== Maven configuration
+
+.settings.xml
+[source, xml]
+----
+  <pluginGroups>
+    <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+  </pluginGroups>
+  <profiles>
+    <profile>
+      <id>sonar</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <!-- Optional URL to server. Default value is http://localhost:9000 -->
+        <sonar.host.url>http://192.168.99.100:9000</sonar.host.url>
+      </properties>
+    </profile>
+  </profiles>
+----
+
+=== Project configuration
+
+.pom.xml
+[source, xml]
+----
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>3.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+----
+
+=== Maven goals
+
+----
+mvn clean install sonar:sonar
+mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+----
