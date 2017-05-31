@@ -1,24 +1,38 @@
 = DOCKER-COMPOSE
 
+== Boot2Docker
+
 I'm using Docker Toolbox (https://www.docker.com/products/docker-toolbox)
 
 ----
-
 docker-machine create --driver virtualbox default
 docker-machine ls
 
 docker-machine start default
 docker-machine env default
 
-docker-compose config
-docker-compose up -d
-docker-compose ps
 docker-machine ip
+docker-machine ssh
 ----
 
-Force rebuild
+== Docker Compose
 
+Check configuration
+
+ $ docker-compose config
+ 
+(Force) rebuild
+ $ docker-compose up -d
  $ docker-compose up -d --build
+
+Check process
+
+ $ docker-compose ps
+
+== Docker commands
+
+ $ docker images
+ $ docker ps -a
 
 Show log
 
@@ -27,3 +41,12 @@ Show log
 AdHoc command
 
  $ docker exec -it [container_name] bash
+
+Volumes
+
+ $ docker volumes ls
+ $ docker volume [volume_name]
+ $ docker-machine ssh
+ $ docker@default:~$ sudo -i
+ $ ls -l /mnt/sda1/var/lib/docker/volumes/
+
