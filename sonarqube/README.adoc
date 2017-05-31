@@ -50,3 +50,17 @@ Spin up a SonarQube container with some installed plugins.
 mvn clean install sonar:sonar
 mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 ----
+
+== References
+
+https://github.com/SonarSource/docker-sonarqube/blob/master/recipes.md
+
+NOTE: by using `volumes` the volumes will be created on `boot2docker`
+----
+$ docker volume ls
+$ docker volume inspect sonarqube_sonarqube_extensions
+$ docker-machine ssh
+
+docker@default:~$ sudo -i
+root@default:~# ls -l /mnt/sda1/var/lib/docker/volumes/sonarqube_sonarqube_extensions/_data/plugins/
+----
