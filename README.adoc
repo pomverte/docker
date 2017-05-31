@@ -22,6 +22,7 @@ Check configuration
  $ docker-compose config
  
 (Force) rebuild
+
  $ docker-compose up -d
  $ docker-compose up -d --build
 
