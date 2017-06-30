@@ -37,7 +37,7 @@ Check process
 
 Show log
 
- $ docker logs [container_name]
+ $ docker logs -f [container_name]
 
 AdHoc command
 
