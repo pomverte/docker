@@ -5,6 +5,7 @@ services:
     container_name: demo-boot
     environment:
       JAVA_OPTS: ""
+      SAME_SAME: "A W E S O M E"
     command: java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /demo.jar
     ports:
       - "8080:8080"
