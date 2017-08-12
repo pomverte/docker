@@ -3,7 +3,7 @@ services:
   ansible_service:
     image: williamyeh/ansible:centos7
     container_name: ansible-here
-    working_dir: /ansible/workspace
+    working_dir: /ansible/provisionning
     command: ansible-playbook -i inventory.yml -vv playbook.yml
     volumes:
-      - "/boot2docker-shared:/ansible/workspace"
+      - "/boot2docker-shared:/ansible/provisionning"
