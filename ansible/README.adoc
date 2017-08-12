@@ -6,9 +6,8 @@ your machine and the boot2docker virtual machine with VirtualBox.
 
 My share folder on my docker host (meaning the boot2docker VM) is located at `/boot2docker-shared`
 
-Just put your `inventory.yml` and `playbook.yml` in the shared folder
-
-. Spinup the target VM with vagrant
+. Put your `inventory.yml` and `playbook.yml` in the shared folder
+. Spin up the target VM with vagrant
 . Launch Ansible with docker
 
 ----
