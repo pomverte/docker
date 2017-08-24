@@ -11,6 +11,7 @@ My share folder on my docker host (meaning the boot2docker VM) is located at `/b
 . Launch Ansible with docker
 
 ----
+vagrant validate
 vagrant up
 docker-compose up
 ----
