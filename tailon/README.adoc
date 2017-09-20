@@ -1,0 +1,7 @@
+= Tailon
+
+. https://tailon.readthedocs.io/en/latest/
+
+----
+docker-compose up -d
+----
