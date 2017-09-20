@@ -1,0 +1,13 @@
+---
+version: '3'
+services:
+  tailon:
+    build: .
+    image: pomverte/tailon:1.0.0
+    container_name: tailon
+    command: tailon -c /etc/tailon/config.yml
+    ports:
+      - "80:80"
+    volumes:
+      - /tailon/logs:/logs
+      - /tailon/config.yml:/etc/tailon/config.yml
