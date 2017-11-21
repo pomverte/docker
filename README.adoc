@@ -37,6 +37,11 @@ Check process
  $ docker images
  $ docker ps -a
 
+.Delete <none> images
+----
+docker rmi $(docker images --quiet --filter "dangling=true")
+----
+
 Show log
 
  $ docker logs -f [container_name]
