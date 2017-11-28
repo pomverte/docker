@@ -7,3 +7,8 @@ services:
     command: ansible-playbook -i inventory.yml -vv playbook.yml
     volumes:
       - "/boot2docker-shared:/ansible/provisionning"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10000k
+        max-file: 10
