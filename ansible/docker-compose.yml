@@ -11,5 +11,5 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: 10000k
-        max-file: 10
+        max-size: "10000k"
+        max-file: "10"
