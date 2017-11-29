@@ -1,0 +1,32 @@
+---
+version: '3'
+services:
+  postgres_service:
+    image: sameersbn/postgresql:9.6-2
+    container_name: postgresql-server
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10000k"
+        max-file: "10"
+    network_mode: bridge
+    command: -c logging_collector=on
+    ports:
+     - "5432:5432"
+    volumes:
+      - /home/pomverte/postgres/data:/var/lib/postgresql
+      - /home/pomverte/postgres/input:/docker-entrypoint-initdb.d/
+    environment:
+      - USERMAP_GID=999
+      - USERMAP_UID=999
+      - DB_NAME=my-db
+      - DB_USER=my-user
+      - DB_PASS=my-password
+      - PG_PASSWORD=postgres-password
+      - REPLICATION_USER=replication-user
+      - REPLICATION_PASS=replication-password
+      - REPLICATION_MODE=master
+#      - REPLICATION_MODE=slave
+      - REPLICATION_SSLMODE=prefer
+      - REPLICATION_HOST=postgres.dummy.slave.host
+      - REPLICATION_PORT=5432
