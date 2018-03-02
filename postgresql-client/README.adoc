@@ -3,3 +3,10 @@
  $ docker run -it --rm jbergknoff/postgresql-client postgresql://user:password@hostname:5432/dbname
 
 reference : https://github.com/jbergknoff/Dockerfile/tree/master/postgresql-client
+
+|===
+| `\l`                                           | List of databases
+| `\dt`                                          | List of tables
+| `SELECT * FROM pg_catalog.pg_tables;`          | 
+| `select nspname from pg_catalog.pg_namespace;` | 
+|===
