@@ -1,0 +1,10 @@
+---
+version: '2'
+services:
+  slock:
+    build: .
+    image: sloc
+    container_name: sloc-nodejs
+    command: sloc --details --format cli-table --alias yaml=yml src/
+    volumes:
+      - "$PWD:/src"
