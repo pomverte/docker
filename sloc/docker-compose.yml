@@ -5,6 +5,6 @@ services:
     build: .
     image: sloc
     container_name: sloc-nodejs
-    command: sloc --details --format cli-table --alias yaml=yml src/
+    command: sloc --details --format cli-table --alias yml=yaml src/
     volumes:
       - "$PWD:/src"
