@@ -1,0 +1,9 @@
+---
+version: '2'
+
+services:
+  terraform:
+    build: ./build
+    image: terraform:0.11.4
+    container_name: terraform-here
+    command: version
