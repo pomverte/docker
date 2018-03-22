@@ -10,4 +10,7 @@ RUN apk add --update git curl openssh && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
+VOLUME ["/data"]
+WORKDIR "/data"
+
 ENTRYPOINT ["/bin/terraform"]
