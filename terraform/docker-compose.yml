@@ -7,6 +7,8 @@ services:
     image: terraform:0.11.4
     container_name: terraform-here
     command: version
+    volumes:
+      - "$PWD:/data"
     environment:
       ARM_SUBSCRIPTION_ID: 
       ARM_CLIENT_ID: 
