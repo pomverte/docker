@@ -40,7 +40,13 @@ Check process
 
 .Delete <none> images
 ----
+docker image prune -f
 docker rmi $(docker images --quiet --filter "dangling=true")
+----
+
+Clean up
+----
+docker system prune --volumes
 ----
 
 Show log
