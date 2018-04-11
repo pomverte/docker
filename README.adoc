@@ -36,7 +36,7 @@ Check process
 
  $ docker images
  $ docker ps -a
- $ docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Names}}'
+ $ docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}'
 
 .Delete <none> images
 ----
