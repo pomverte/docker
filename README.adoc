@@ -46,6 +46,7 @@ docker rmi $(docker images --quiet --filter "dangling=true")
 
 Clean up
 ----
+docker system prune
 docker system prune --volumes
 ----
 
