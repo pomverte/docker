@@ -48,6 +48,7 @@ Clean up
 ----
 docker system prune
 docker system prune --volumes
+docker rm $(docker ps -a --format '{{.ID}}' --filter 'exited=0')
 ----
 
 Show log
