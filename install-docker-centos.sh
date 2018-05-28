@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_COMPOSE_VERSION = 1.19.0
+DOCKER_COMPOSE_VERSION = 1.21.2
 
 yum update -y
 yum install -y epel-release
