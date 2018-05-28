@@ -6,21 +6,27 @@ yum update -y
 yum install -y epel-release
 
 ## DOCKER CE
-# https://docs.docker.com/engine/installation/linux/docker-ce/centos/
-yum remove docker \
+# https://docs.docker.com/install/linux/docker-ce/centos/
+sudo yum remove docker \
+    docker-client \
+    docker-client-latest \
     docker-common \
+    docker-latest \
+    docker-latest-logrotate \
+    docker-logrotate \
     docker-selinux \
+    docker-engine-selinux \
     docker-engine
 
-yum install -y yum-utils \
+sudo yum install -y yum-utils \
     device-mapper-persistent-data \
     lvm2
 
-yum-config-manager \
+sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 
-yum install -y docker-ce
+sudo yum install -y docker-ce
 
 sudo systemctl enable docker
 sudo systemctl start docker
