@@ -1,4 +1,4 @@
-= Azure CLI on Docker
+= Azure CLI 2.0 on Docker
 
  docker run -it --rm -v $PWD/.azure:/root/.azure microsoft/azure-cli:2.0.33
 
