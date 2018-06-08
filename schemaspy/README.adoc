@@ -1,0 +1,9 @@
+= Schemaspy
+
+----
+docker run --rm -v "$PWD/output:/output" schemaspy/schemaspy:snapshot -t pgsql -host xx.xx.xx.xx -port 5432 -db database -u user -p password -s public
+----
+
+== Sources
+* https://github.com/schemaspy/schemaspy
+* http://schemaspy.readthedocs.io/en/latest/started.html
