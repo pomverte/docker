@@ -1,6 +1,6 @@
-= DOCKER-COMPOSE
+= Docker stuff
 
-== Boot2Docker
+== Docker Toolbox
 
 I'm using Docker Toolbox (https://www.docker.com/products/docker-toolbox)
 
@@ -67,3 +67,17 @@ Volumes
  $ docker@default:~$ sudo -i
  $ ls -l /mnt/sda1/var/lib/docker/volumes/
 
+== Dockerfile tips
+
+=== Non root user
+
+----
+RUN groupadd -r myuser
+RUN useradd -m -r -g myuser myuser
+USER myuser
+----
+
+=== Size does matter
+
+* use alpine base image
+* remove any unused downloaded archives
