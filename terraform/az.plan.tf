@@ -1,7 +1,7 @@
 # Configure the Azure Provider
 provider "azurerm" {
   environment = "public"
-  version = "~> 1.3"
+  version = "~> 1.6"
 }
 
 resource "azurerm_resource_group" "pom" {

@@ -3,6 +3,13 @@
 == Hello world
 
 ----
+
+docker build --tag terraform:0.11 .
+docker run -it terraform:0.11
+
+
+docker run -it --rm -v $PWD/.azure:/root/.azure microsoft/azure-cli:2.0.33
+
 terraform init
 terraform plan
 terraform apply

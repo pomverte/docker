@@ -13,4 +13,6 @@ RUN apk add --update git curl openssh && \
 VOLUME ["/data"]
 WORKDIR "/data"
 
+COPY az.plan.tf /data/main.tf
+
 ENTRYPOINT ["/bin/terraform"]
