@@ -5,5 +5,3 @@ docker build -t multi-stage .
 docker run --rm -d -p 8080:8080 multi-stage
 curl -v http://192.168.99.100:8080/actuator/health
 ----
-
-IMPORTANT: how to cache maven dependencies in the first build stage ?
