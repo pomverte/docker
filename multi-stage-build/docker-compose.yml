@@ -1,0 +1,14 @@
+---
+version: '3'
+services:
+  multi_stage:
+    build: .
+    image: multi-stage:0.0.1-SNAPSHOT
+    container_name: multi-stage
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10000k"
+        max-file: "10"
+    ports:
+      - "8080:8080"

@@ -1,7 +1,20 @@
 = Multi stage Docker build
 
+== Build and run
+
 ----
 docker build -t multi-stage:0.0.1-SNAPSHOT .
 docker run --rm -d -p 8080:8080 multi-stage
-curl -v http://192.168.99.100:8080/actuator/health
 ----
+
+OR
+
+----
+docker-compose up -d
+----
+
+== Test
+
+ curl -v http://192.168.99.100:8080/actuator/health
+
+ docker exec -i multi-stage sh
