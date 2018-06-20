@@ -1,0 +1,13 @@
+= Artifactory
+
+----
+docker-compose config
+docker-compose up -d
+----
+
+NOTE: Docker registry is not supported in OSS version
+
+== References
+
+- https://www.jfrog.com/confluence/display/RTF/Installing+with+Docker
+- https://github.com/jfrog/artifactory-docker-examples
