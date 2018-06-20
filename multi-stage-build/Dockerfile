@@ -7,9 +7,17 @@ RUN mvn -Dmaven.repo.local=/work/.m2/repository clean package
 
 # build stage server
 FROM openjdk:8-jdk-alpine3.7
-LABEL maintainer github@pomverte
-LABEL maintainer twitter@vietnem
+
+LABEL maintainer = github@pomverte
+LABEL maintainer = twitter@vietnem
+
 EXPOSE 8080
+RUN adduser java -h / -D
+
 COPY --from=build /work/target/multi-stage*.jar /multi-stage.jar
+RUN chown java /multi-stage.jar
 RUN sh -c 'touch /multi-stage.jar'
+
+USER java
+
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/multi-stage.jar"]
