@@ -8,7 +8,7 @@ RUN mvn -Dmaven.repo.local=/work/.m2/repository clean package
 # build stage server
 FROM openjdk:8-jdk-alpine3.7
 LABEL maintainer github@pomverte
-LABEL maintainer twitter@pomverte
+LABEL maintainer twitter@vietnem
 EXPOSE 8080
 COPY --from=build /work/target/multi-stage*.jar /multi-stage.jar
 RUN sh -c 'touch /multi-stage.jar'
