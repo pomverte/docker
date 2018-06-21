@@ -14,13 +14,17 @@ FROM openjdk:8-jdk-alpine3.7
 LABEL maintainer = github@pomverte
 LABEL maintainer = twitter@vietnem
 
+ARG APP_NAME=multi-stage
+ENV APP_NAME=$APP_NAME
+
 EXPOSE 8080
 RUN adduser java -h / -D
 
-COPY --from=build /work/target/multi-stage*.jar /multi-stage.jar
+COPY --from=build /work/target/${APP_NAME}*.jar /${APP_NAME}.jar
 RUN chown java /multi-stage.jar
 RUN sh -c 'touch /multi-stage.jar'
 
 USER java
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/multi-stage.jar"]
+#ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/$APP_NAME.jar"]
+ENTRYPOINT java -Djava.security.egd=file:/dev/./urandom -jar /${APP_NAME}.jar
