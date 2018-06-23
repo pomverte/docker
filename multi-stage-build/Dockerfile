@@ -11,8 +11,13 @@ RUN mvn --batch-mode clean package
 # build stage server
 FROM openjdk:8-jdk-alpine3.7
 
-LABEL maintainer = github@pomverte
-LABEL maintainer = twitter@vietnem
+ARG GIT_BRANCH=$GIT_BRANCH
+ARG GIT_COMMIT=$GIT_COMMIT
+
+LABEL maintainer="pomverte@github, vietnem@twitter"
+LABEL GIT_BRANCH=$GIT_BRANCH
+LABEL GIT_COMMIT=$GIT_COMMIT
+LABEL APP=multi-stage
 
 EXPOSE 8080
 RUN adduser java -h / -D

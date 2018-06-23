@@ -1,20 +1,19 @@
 = Multi stage Docker build
 
-== Build and run
+== Build, run and check
 
 ----
-docker build -t multi-stage:0.0.1-SNAPSHOT .
-docker run --rm -d -p 8080:8080 multi-stage:0.0.1-SNAPSHOT
+./docker.sh
+docker run --rm -d -p 8080:8080 --name my_container multi-stage
+docker inspect my_container | grep -A 4 Labels
+curl -v http://192.168.99.100:8080/actuator/health
 ----
 
-OR
+== Other stuff
 
 ----
 docker-compose up -d
+docker build -t multi-stage .
+docker exec -i multi-stage sh
+docker inspect my_container | jq -r '.[0].Config.Labels["com.docker.compose.project"]'
 ----
-
-== Test
-
- curl -v http://192.168.99.100:8080/actuator/health
-
- docker exec -i multi-stage sh
