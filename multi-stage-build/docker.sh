@@ -26,7 +26,8 @@ function info() {
     # ... so much pain to get the version
     #docker run --rm -v /work/pom.xml:/pom.xml maven:3.5-jdk-8-slim mvn -f /pom.xml org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version
     #PROJECT_VERSION="$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version)"
-    PROJECT_VERSION="0.0.1"
+    # WARNING this is ugly
+    PROJECT_VERSION="$(cat pom.xml | grep '^    <version>.*</version>$' | awk -F'[><]' '{print $3}')"
 
     echo "------------------------------"
     echo git branch : ${GIT_BRANCH}
