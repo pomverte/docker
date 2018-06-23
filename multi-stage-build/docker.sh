@@ -2,11 +2,29 @@
 
 set -e
 
-DOCKER_REGISTRY=
-DOCKER_USER=
-DOCKER_PASSWORD=
+DOCKER_REGISTRY=""
+DOCKER_USER=""
+DOCKER_PASSWORD=""
+
+while getopts "u:p:" opt; do
+    case ${opt} in
+        u)
+            DOCKER_USER=$OPTARG
+            ;;
+        p)
+            DOCKER_PASSWORD=$OPTARG
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            ;;
+    esac
+done
 
 function info() {
+
+    [[ ${DOCKER_USER} == "" ]] && echo "Please provide a user for docker registry" && exit 1
+    [[ ${DOCKER_PASSWORD} == "" ]] && echo "Please provide a password for docker registry" && exit 1
+
     GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
     GIT_COMMIT="$(git rev-parse --verify HEAD)"
 
@@ -19,6 +37,8 @@ function info() {
     echo git branch : ${GIT_BRANCH}
     echo git commit : ${GIT_COMMIT}
     echo project version : ${PROJECT_VERSION}
+    echo docker user : ${DOCKER_USER}
+    echo docker registry : ${DOCKER_REGISTRY}
     echo "------------------------------"
 
     if [[ "${GIT_BRANCH}" == "master" ]] &&
@@ -35,13 +55,15 @@ function build_image() {
 
 function push_tag() {
     # log into docker registry
-    #docker login ${DOCKER_REGISTRY} -u=${DOCKER_USER} -p=${DOCKER_PASSWORD}
+    #docker login -u=${DOCKER_USER} -p=${DOCKER_PASSWORD} ${DOCKER_REGISTRY}
     # push tag
     #docker push multi-stage:${PROJECT_VERSION}
     if [[ "${GIT_BRANCH}" == "master" ]]; then
         docker tag multi-stage:${PROJECT_VERSION} multi-stage:latest
         #docker push multi-stage:latest
     fi
+    # logout
+    docker logout
 }
 
 info
