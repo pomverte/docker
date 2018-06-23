@@ -10,12 +10,6 @@ docker run --rm -d -p 8080:8080 multi-stage:0.0.1-SNAPSHOT
 OR
 
 ----
-docker build -t multi-stage:0.0.1-SNAPSHOT --build-arg APP_NAME=multi-stage .
-docker run --rm -d -p 8080:8080 multi-stage:0.0.1-SNAPSHOT
-----
-OR
-
-----
 docker-compose up -d
 ----
 
