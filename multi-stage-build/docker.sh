@@ -8,15 +8,9 @@ DOCKER_PASSWORD=""
 
 while getopts "u:p:" opt; do
     case ${opt} in
-        u)
-            DOCKER_USER=$OPTARG
-            ;;
-        p)
-            DOCKER_PASSWORD=$OPTARG
-            ;;
-        \?)
-            echo "Invalid option: -$OPTARG" >&2
-            ;;
+        u) DOCKER_USER=${OPTARG};;
+        p) DOCKER_PASSWORD=${OPTARG};;
+        \?) echo "Invalid option: -${OPTARG}" >&2;;
     esac
 done
 
@@ -24,6 +18,7 @@ function info() {
 
     [[ ${DOCKER_USER} == "" ]] && echo "Please provide a user for docker registry" && exit 1
     [[ ${DOCKER_PASSWORD} == "" ]] && echo "Please provide a password for docker registry" && exit 1
+    DOCKER_IMAGE=${DOCKER_USER}/multi-stage
 
     GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
     GIT_COMMIT="$(git rev-parse --verify HEAD)"
@@ -39,6 +34,7 @@ function info() {
     echo project version : ${PROJECT_VERSION}
     echo docker user : ${DOCKER_USER}
     echo docker registry : ${DOCKER_REGISTRY}
+    echo docker image : ${DOCKER_IMAGE}
     echo "------------------------------"
 
     if [[ "${GIT_BRANCH}" == "master" ]] &&
@@ -50,17 +46,17 @@ function info() {
 
 function build_image() {
     # build image with tag
-    docker build -t multi-stage:${PROJECT_VERSION} --build-arg GIT_BRANCH=${GIT_BRANCH} --build-arg GIT_COMMIT=${GIT_COMMIT} .
+    docker build -t ${DOCKER_IMAGE}:${PROJECT_VERSION} --build-arg GIT_BRANCH=${GIT_BRANCH} --build-arg GIT_COMMIT=${GIT_COMMIT} .
 }
 
 function push_tag() {
     # log into docker registry
-    #docker login -u=${DOCKER_USER} -p=${DOCKER_PASSWORD} ${DOCKER_REGISTRY}
+    docker login -u=${DOCKER_USER} -p=${DOCKER_PASSWORD} ${DOCKER_REGISTRY}
     # push tag
-    #docker push multi-stage:${PROJECT_VERSION}
+    docker push ${DOCKER_IMAGE}:${PROJECT_VERSION}
     if [[ "${GIT_BRANCH}" == "master" ]]; then
-        docker tag multi-stage:${PROJECT_VERSION} multi-stage:latest
-        #docker push multi-stage:latest
+        docker tag ${DOCKER_IMAGE}:${PROJECT_VERSION} ${DOCKER_IMAGE}:latest
+        docker push ${DOCKER_IMAGE}:latest
     fi
     # logout
     docker logout
