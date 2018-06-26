@@ -34,35 +34,51 @@ Check process
 
 == Docker commands
 
- $ docker images
- $ docker ps -a
- $ docker ps -a --format 'table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Status}}'
+[%header,cols=2*]
+|===
+| Command
+| Description
 
-.Delete <none> images
-----
-docker image prune -f
-docker rmi $(docker images --quiet --filter "dangling=true")
-----
+| `docker container ls`
+| list containers
 
-Clean up
-----
-docker system prune
-docker system prune --volumes
-docker rm $(docker ps -a --format '{{.ID}}' --filter 'exited=0')
-----
+| `docker container ls -a --format 'table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Status}}'`
+| list containers
 
-Show log
+| `docker ps -a`
+| to be deprecated
 
- $ docker logs -f [container_name]
+| `docker logs -f [container_name]`
+| show log
 
-AdHoc command
+| `docker exec -it [container_name] bash`
+| execute command
 
- $ docker exec -it [container_name] bash
+| `docker image ls`
+| list images
 
-Volumes
+| `docker images`
+| list images (to be deprecated)
 
- $ docker volumes ls
- $ docker volume [volume_name]
+| `docker image prune -f`
+| clean images
+
+| `docker rmi $(docker images --quiet --filter "dangling=true")`
+| clean images
+
+| `docker volumes ls`
+| list docker volumes
+
+| `docker system prune [--volumes]`
+| clean stopped container
+
+| `docker rm $(docker ps -a --format '{{.ID}}' --filter 'exited=0')`
+| clean stopped container
+
+| `docker stats`
+| resources usage
+|===
+
  $ docker-machine ssh
  $ docker@default:~$ sudo -i
  $ ls -l /mnt/sda1/var/lib/docker/volumes/
