@@ -34,7 +34,7 @@ Check process
 
 == Docker commands
 
-[%header,cols=2*]
+[%header,cols="3, 1"]
 |===
 | Command
 | Description
@@ -79,12 +79,11 @@ Check process
 | resources usage
 |===
 
+ docker container ls -q | xargs docker stats
+
  $ docker-machine ssh
  $ docker@default:~$ sudo -i
  $ ls -l /mnt/sda1/var/lib/docker/volumes/
-
- docker stats [container_name]
- docker ps -q | xargs docker stats
 
 == Dockerfile tips
 
