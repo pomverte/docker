@@ -8,6 +8,11 @@ services:
     container_name: redis
     command:
     - --loglevel warning
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10000k"
+        max-file: "10"
     volumes:
     - /srv/docker/gitlab/redis:/var/lib/redis:Z
 
@@ -15,6 +20,11 @@ services:
     restart: always
     image: sameersbn/postgresql:9.6-2
     container_name: postgres
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10000k"
+        max-file: "10"
     volumes:
     - /srv/docker/gitlab/postgresql:/var/lib/postgresql:Z
     environment:
@@ -33,6 +43,11 @@ services:
     ports:
     - "10080:80"
     - "10022:22"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10000k"
+        max-file: "10"
     volumes:
     - /srv/docker/gitlab/gitlab:/home/git/data:Z
     environment:
