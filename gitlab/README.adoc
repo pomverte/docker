@@ -1,0 +1,6 @@
+# Gitlab on Docker
+
+NOTE: Passwords are stored in `.env` file, that file should not be in SCM depending on security context
+
+* https://github.com/sameersbn/docker-gitlab/
+* http://www.damagehead.com/docker-gitlab/
