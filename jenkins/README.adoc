@@ -1,5 +1,7 @@
 = Jenkins CI
 
+IMPORTANT: Dans le Dockerfile, `RUN adduser jenkins users` `users` est le groupe dont le *gid* = *docker gid* sur le docker host
+
 * https://hub.docker.com/r/jenkins/jenkins/
 * https://github.com/jenkinsci/docker/
 
