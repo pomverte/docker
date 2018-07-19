@@ -1,0 +1,11 @@
+= Jenkins CI
+
+* https://hub.docker.com/r/jenkins/jenkins/
+* https://github.com/jenkinsci/docker/
+
+password : `cat /var/jenkins_home/secrets/initialAdminPassword`
+
+----
+JENKINS_HOST=user:password@192.168.99.100:8080
+curl -sSL "http://$JENKINS_HOST/pluginManager/api/xml?depth=1&xpath=/*/*/shortName|/*/*/version&wrapper=plugins" | perl -pe 's/.*?<shortName>([\w-]+).*?<version>([^<]+)()(<\/\w+>)+/\1 \2\n/g'|sed 's/ /:/'
+----

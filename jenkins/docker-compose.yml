@@ -1,0 +1,26 @@
+---
+version: '3'
+services:
+  jenkins:
+    build: ./build
+    image: "pomverte/jenkins:2.133-alpine"
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10000k"
+        max-file: "10"
+    labels:
+      org.pomverte.service: "jenkins"
+      org.pomverte.maintainer: "pomverte@github.com"
+    volumes:
+      - "jenkins_home:/var/jenkins_home"
+
+volumes:
+# /data
+# /var/lib/docker/volumes/
+  jenkins_home:
+    driver: local
