@@ -50,7 +50,7 @@ https://docs.docker.com/engine/reference/commandline/cli/
 | `docker ps -a`
 | to be deprecated
 
-| `docker logs -f [container_name]`
+| `docker container logs -f [container_name]`
 | show log
 
 | `docker exec -it [container_name] bash`
