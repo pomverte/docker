@@ -17,3 +17,4 @@ email-ext:2.62
 mailer:1.21
 embeddable-build-status:1.9
 rebuild:1.28
+pipeline-utility-steps:2.0.2
