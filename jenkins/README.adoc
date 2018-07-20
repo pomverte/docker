@@ -5,19 +5,90 @@ IMPORTANT: Dans le Dockerfile, `RUN adduser jenkins users` `users` est le groupe
 * https://hub.docker.com/r/jenkins/jenkins/
 * https://github.com/jenkinsci/docker/
 
-password : `cat /var/jenkins_home/secrets/initialAdminPassword`
+== Start
+
+----
+docker-machine start
+docker-machine env
+eval $("C:\Program Files\Docker Toolbox\docker-machine.exe" env)
+docker-machine ip
+
+docker-compose config
+docker-compose up -d --build
+docker container logs -f jenkins
+----
+
+.Récupération du mot de passe admin
+----
+*************************************************************
+
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+
+*************************************************************
+----
+
+
+== Initialisation de Jenkins
+
+ http://192.168.99.100:8080
+
+* Personnaliser Jenkins
+** Sélectionner les plugins à installer
+** Aucun
+
+TIP: Les plugins installés sont déjà dans le fichier `./build/plugins.txt`
+
+* Créer le 1er utilisateur Administrateur
+* Configuration de l'instance
+** Renseigner l'URL de Jenkins
+
+
+== Jenkins API
+
+=== Liste des plugins
 
 ----
 JENKINS_HOST=user:password@192.168.99.100:8080
 curl -sSL "http://$JENKINS_HOST/pluginManager/api/xml?depth=1&xpath=/*/*/shortName|/*/*/version&wrapper=plugins" | perl -pe 's/.*?<shortName>([\w-]+).*?<version>([^<]+)()(<\/\w+>)+/\1 \2\n/g'|sed 's/ /:/'
 ----
 
-.create job
+
+=== Job
+
+reference : https://support.cloudbees.com/hc/en-us/articles/220857567-How-to-create-a-job-using-the-REST-API-and-cURL-
+
+.Create job
 ----
-curl -s -XPOST 'http://192.168.99.100:8080/createItem?name=boot-external-config' -u hvle:hvle --data-binary @boot-external-config.xml -H "Content-Type:text/xml"
+CRUMB=$(curl -s 'http://192.168.99.100:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u hvle:hvle)
+curl -s -XPOST "http://$JENKINS_HOST/createItem?name=boot-external-config" -u hvle:hvle --data-binary @boot-external-config.xml -H "$CRUMB" -H "Content-Type:text/xml"
 ----
 
-.retreive config
+.Retreive config
 ----
 curl -X GET http://192.168.99.100:8080/job/boot-external-config/config.xml -u hvle:hvle -o boot-external-config.xml
+----
+
+== Configuration
+
+* Administrer Jenkins
+* Configuration files
+* Add a new Config
+** Maven settings.xml
+** `ID: maven-settings`
+
+== Blue Ocean
+
+ http://192.168.99.100:8080/blue/pipelines
+
+
+== Clean up
+
+----
+docker system prune -f
+docker volume prune -f
 ----
