@@ -1,5 +1,17 @@
 = Docker stuff
 
+== Installation
+
+.get.docker.com
+----
+curl -fsSL get.docker.com -o get-docker.sh | sh
+----
+
+.CentOS
+----
+./install-docker-centos.sh
+----
+
 == Docker Toolbox
 
 I'm using Docker Toolbox (https://www.docker.com/products/docker-toolbox)
