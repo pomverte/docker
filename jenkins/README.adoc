@@ -89,6 +89,5 @@ curl -X GET http://192.168.99.100:8080/job/boot-external-config/config.xml -u hv
 == Clean up
 
 ----
-docker system prune -f
-docker volume prune -f
+docker container rm -f -v jenkins
 ----
