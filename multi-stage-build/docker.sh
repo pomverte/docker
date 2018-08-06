@@ -48,6 +48,7 @@ function info() {
 function build_image() {
     # build image with tag
     docker build -t ${DOCKER_IMAGE}:${PROJECT_VERSION} --build-arg GIT_BRANCH=${GIT_BRANCH} --build-arg GIT_COMMIT=${GIT_COMMIT} .
+    docker tag ${DOCKER_IMAGE}:${PROJECT_VERSION} ${DOCKER_IMAGE}:${GIT_COMMIT}
 }
 
 function push_tag() {
@@ -55,6 +56,7 @@ function push_tag() {
     docker login -u=${DOCKER_USER} -p=${DOCKER_PASSWORD} ${DOCKER_REGISTRY}
     # push tag
     docker push ${DOCKER_IMAGE}:${PROJECT_VERSION}
+    docker push ${DOCKER_IMAGE}:${GIT_COMMIT}
     if [[ "${GIT_BRANCH}" == "master" ]]; then
         docker tag ${DOCKER_IMAGE}:${PROJECT_VERSION} ${DOCKER_IMAGE}:latest
         docker push ${DOCKER_IMAGE}:latest
