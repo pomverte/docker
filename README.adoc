@@ -86,6 +86,9 @@ https://docs.docker.com/engine/reference/commandline/cli/
 | `docker system prune [--volumes]`
 | clean stopped container
 
+| `docker container prune -f`
+| clean stopped container
+
 | `docker rm $(docker ps -a --format '{{.ID}}' --filter 'exited=0')`
 | clean stopped container
 
