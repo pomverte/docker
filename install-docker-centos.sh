@@ -2,7 +2,7 @@
 
 # UPDATE : checkout https://get.docker.com  https://github.com/docker/docker-install
 
-DOCKER_COMPOSE_VERSION = 1.21.2
+DOCKER_COMPOSE_VERSION=1.21.2
 
 yum update -y
 yum install -y epel-release
