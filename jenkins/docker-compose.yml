@@ -2,8 +2,12 @@
 version: '3'
 services:
   jenkins:
-    build: ./build
-    image: "pomverte/jenkins:2.133-alpine"
+    build:
+      context: ./build
+      args:
+        # CHANGEME
+        - DOCKER_HOST_DOCKER_GID=994
+    image: "pomverte/jenkins:2.136-alpine"
     container_name: jenkins
     ports:
       - "8080:8080"
@@ -19,11 +23,7 @@ services:
     volumes:
       - "jenkins_home:/var/jenkins_home"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/usr/local/bin/docker:/usr/bin/docker"
-      #- "$(which docker):/usr/bin/docker"
 
 volumes:
-# /data
-# /var/lib/docker/volumes/
   jenkins_home:
     driver: local
