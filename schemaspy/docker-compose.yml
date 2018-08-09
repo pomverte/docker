@@ -3,7 +3,7 @@ version: '3'
 
 services:
   schemaspy:
-    image: schemaspy/schemaspy:snapshot
+    image: schemaspy/schemaspy:6.0.0
     command:
     volumes:
       - "$PWD/output:/output"
