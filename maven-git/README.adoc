@@ -1,0 +1,8 @@
+= Alpine Maven Git
+
+A minimal image with maven and git
+
+.build
+----
+docker image build -t maven-git:3.5.4-jdk-8-alpine .
+----
