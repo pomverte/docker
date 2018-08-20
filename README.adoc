@@ -7,6 +7,8 @@
 curl -fsSL get.docker.com -o get-docker.sh | sh
 ----
 
+WARNING: could be dangerous if get.docker.com was hacked or network failed during transfer ...
+
 .CentOS
 ----
 ./install-docker-centos.sh
