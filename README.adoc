@@ -106,6 +106,35 @@ https://docs.docker.com/engine/reference/commandline/cli/
 
 == Dockerfile tips
 
+=== Docker daemon configuration
+
+==== Default Log Driver
+
+./etc/docker/daemon.json
+[source,json]
+----
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10000k",
+    "max-file": "10"
+  }
+}
+----
+
+==== Insecure Registries
+
+./etc/docker/daemon.json
+[source,json]
+----
+{
+  "insecure-registries" : [
+    "my.registry.com",
+    "dummy.registry.com"
+  ]
+}
+----
+
 === Non root user
 
 ----
