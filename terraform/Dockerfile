@@ -1,7 +1,7 @@
 FROM alpine:3.9
 
-ENV TERRAFORM_VERSION=0.11.7
-ENV TERRAFORM_SHA256SUM=6b8ce67647a59b2a3f70199c304abca0ddec0e49fd060944c26f666298e23418
+ENV TERRAFORM_VERSION=0.11.11
+ENV TERRAFORM_SHA256SUM=94504f4a67bad612b5c8e3a4b7ce6ca2772b3c1559630dfd71e9c519e3d6149c
 
 RUN apk add --update git curl openssh && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
