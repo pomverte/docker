@@ -5,9 +5,10 @@ services:
     image: williamyeh/ansible:centos7
     container_name: ansible-here
     working_dir: /ansible/provisionning
-    command: ansible-playbook -i inventory.yml -vv playbook.yml
+    command: ansible-playbook -i inventory.ini -vv playbook.yml
     volumes:
-      - "$PWD:/ansible/provisionning"
+    - "$PWD:/ansible/provisionning"
+    #- "/home/$USER/.ssh/id_rsa.pub:/home/root/.ssh/id_rsa.pub:ro"
     logging:
       driver: "json-file"
       options:
