@@ -8,6 +8,8 @@ My share folder on my docker host (meaning the boot2docker VM) is located at `/b
 
 . Put your `inventory.ini` and `playbook.yml` in the shared folder
 . Spin up the target VM with vagrant
+. If you want to use ssh key, Add the public ssh key into the VM `/home/vagrant/.ssh/id_rsa.pub` and your private ssh key in the current folder
+. Else edit the `inventory.ini` to add Ansible user user's password 
 . Launch Ansible with docker
 
 ----
