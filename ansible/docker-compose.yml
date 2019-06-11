@@ -7,8 +7,8 @@ services:
     working_dir: /ansible/provisionning
     command: ansible-playbook -i inventory.ini -vv playbook.yml
     volumes:
-    - "$PWD:/ansible/provisionning"
-    #- "/home/$USER/.ssh/id_rsa.pub:/home/root/.ssh/id_rsa.pub:ro"
+      - "$PWD:/ansible/provisionning"
+      - "$PWD/id_rsa:/root/.ssh/id_rsa"
     logging:
       driver: "json-file"
       options:
