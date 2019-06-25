@@ -16,6 +16,8 @@ WARNING: could be dangerous if get.docker.com was hacked or network failed durin
 
 == Docker Toolbox
 
+TIP: It's time to use Docker Desktop (https://www.docker.com/products/docker-desktop)
+
 I'm using Docker Toolbox (https://www.docker.com/products/docker-toolbox)
 
 ----
