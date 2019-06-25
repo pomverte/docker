@@ -149,3 +149,7 @@ USER myuser
 
 * use alpine base image
 * remove any unused downloaded archives
+
+=== Image format
+
+`NAMESPACE/IMAGE:TAG`
