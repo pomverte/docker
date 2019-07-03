@@ -2,7 +2,7 @@
 version: '3'
 services:
   ansible_service:
-    image: williamyeh/ansible:centos7
+    image: williamyeh/ansible:alpine3
     container_name: ansible-here
     working_dir: /ansible/provisionning
     command: ansible-playbook -i inventory.ini -vv playbook.yml
