@@ -3,10 +3,10 @@ FROM maven:3.5-jdk-8-slim AS build
 WORKDIR /work
 
 COPY pom.xml .
-RUN mvn --batch-mode dependency:resolve
+RUN mvn -e --batch-mode dependency:resolve
 
 COPY src ./src
-RUN mvn --batch-mode clean package
+RUN mvn -e --batch-mode clean package
 
 # build stage server
 FROM openjdk:8-jdk-alpine3.7
