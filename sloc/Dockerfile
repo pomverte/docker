@@ -1,2 +1,2 @@
-FROM node:9.7-alpine
+FROM node:12-alpine
 RUN npm install -g sloc
