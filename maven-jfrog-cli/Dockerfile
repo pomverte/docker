@@ -1,5 +1,6 @@
 FROM maven:3.6-jdk-8-slim
 
+# https://bintray.com/jfrog/jfrog-cli-go/jfrog-cli-linux-amd64
 ENV JFROG_CLI_VERSION=1.26.3
 ENV JFROG_CLI_SHA256SUM=bd882ec33165eb34e381bbf6d8f5b79211e6ed59eefd33dd3875c7a0098b8db4
 
