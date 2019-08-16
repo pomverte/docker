@@ -137,6 +137,15 @@ https://docs.docker.com/engine/reference/commandline/cli/
 }
 ----
 
+=== Docker push to private registry
+
+----
+docker login -u=USER -p=PASSWORD http://my-private-registry[:port]
+docker image build -t my-private-registry[:port]/NAMESPACE/IMAGE:TAG .
+docker image push my-private-registry[:port]/NAMESPACE/IMAGE:TAG
+docker logout
+----
+
 === Non root user
 
 ----
